@@ -8,12 +8,16 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../../hooks/useAuth";
+import { useFavorites } from "../../hooks/useFavorites";
+import { useCommunityReports } from "../../hooks/useCommunityReports";
 
 /**
  * Profile screen showing user info and sign-out button.
  */
 export default function ProfileScreen(): React.ReactElement {
     const { user, signOut } = useAuth();
+    const { favoriteIds } = useFavorites();
+    const { reports } = useCommunityReports(null);
 
     const handleSignOut = () => {
         Alert.alert("Sign Out", "Are you sure you want to sign out?", [
@@ -58,7 +62,7 @@ export default function ProfileScreen(): React.ReactElement {
                             size={22}
                             color="#EF4444"
                         />
-                        <Text style={styles.statNumber}>0</Text>
+                        <Text style={styles.statNumber}>{favoriteIds.size}</Text>
                         <Text style={styles.statLabel}>Saved</Text>
                     </View>
                     <View style={styles.statCard}>
@@ -67,7 +71,7 @@ export default function ProfileScreen(): React.ReactElement {
                             size={22}
                             color="#F59E0B"
                         />
-                        <Text style={styles.statNumber}>0</Text>
+                        <Text style={styles.statNumber}>{reports.length}</Text>
                         <Text style={styles.statLabel}>Reports</Text>
                     </View>
                 </View>

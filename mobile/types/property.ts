@@ -50,3 +50,13 @@ export interface Review {
     source: string;
     rating: number;
 }
+
+/**
+ * Represents a single message in the AI Agent chat.
+ */
+export interface ChatMessage {
+    id: string;
+    role: "user" | "assistant" | "system";
+    content: string;
+    timestamp: number;
+}

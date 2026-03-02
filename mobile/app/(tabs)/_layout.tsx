@@ -47,6 +47,19 @@ export default function TabLayout(): React.ReactElement {
                 }}
             />
             <Tabs.Screen
+                name="agent"
+                options={{
+                    title: "AI Agent",
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons
+                            name="chatbubble-ellipses"
+                            size={size}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen
                 name="profile"
                 options={{
                     title: "Profile",
